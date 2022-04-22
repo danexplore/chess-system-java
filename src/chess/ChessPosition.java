@@ -6,6 +6,7 @@ public class ChessPosition {
 
 	private char column;
 	private int row;
+	
 	public ChessPosition(char column, int row) {
 		if (column < 'a' || column > 'h' || row < 1 || row > 8) {
 			throw new ChessException("Error instantiating ChessPosition. Valid values are from a1 to h8");
@@ -21,10 +22,13 @@ public class ChessPosition {
 		return row;
 	}
 	
+//	return a new Position (8 - row (if row == 1 return 7), column - 'a' (if column = 'h' return 7))
 	protected Position toPosition() {
 		return new Position(8 - row, column - 'a');
 	}
 	
+//	return a new ChessPosition(Position) ('a' - position.getColumn() (if column == 'h' return 'g'), 
+//	8 - position.getRow() (if row == 1 return 7)) basically transforms size into index
 	protected static ChessPosition fromChessPosition(Position position) {
 		return new ChessPosition((char)('a' - position.getColumn()), 8 - position.getRow());
 	}

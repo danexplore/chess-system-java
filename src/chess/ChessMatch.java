@@ -13,9 +13,11 @@ public class ChessMatch {
 		initialSetup();
 	}
 	
+//	return the matrix of pieces with board sizes and assign a 
+//	ChessPiece value to each individual position of the matrix with the method board.piece(row, column)
 	public ChessPiece[][] getPieces() {
 		ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
-		
+
 		for (int i = 0; i < board.getRows(); i++) {
 			for (int j = 0; j < board.getColumns(); j++) {
 				mat[i][j] = (ChessPiece) board.piece(i, j);
@@ -25,10 +27,13 @@ public class ChessMatch {
 		return mat;
 	}
 	
+//	Place a piece on the board with the arguments column row and ChessPiece
+//	with the method board.placePiece(ChessPiece, ChessPosition.toPosition)
 	private void placeNewPiece(char column, int row, ChessPiece piece) {
 		board.placePiece(piece, new ChessPosition(column, row).toPosition());
 	}
 	
+//	Setup the pieces with placeNewPiece method
 	private void initialSetup() {
 		placeNewPiece('h', 8, new Rook(board, Color.WHITE));
 		placeNewPiece('e', 1, new King(board, Color.WHITE));
