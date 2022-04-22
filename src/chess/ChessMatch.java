@@ -29,6 +29,7 @@ public class ChessMatch {
 		return mat;
 	}
 	
+//	Perform a move with a source position and a target position
 	public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
 		Position source = sourcePosition.toPosition();
 		Position target = targetPosition.toPosition();
@@ -37,12 +38,15 @@ public class ChessMatch {
 		return (ChessPiece) capturedPiece;
 	}
 	
+//	Check if source position don't have a piece and throws a exception if true
 	private void validateSourcePosition(Position position) {
 		if (!board.thereIsAPiece(position)) {
 			throw new ChessException("There is no piece at source position");
 		}
 	}
 	
+//	Make move logic. get a source and target position, remove a piece from source position,
+//	remove a piece from target position calls board.placePiece(piece, target) return capturedPiece.
 	private Piece makeMove(Position source, Position target) {
 		Piece p = board.removePiece(source);
 		Piece capturedPiece = board.removePiece(target);

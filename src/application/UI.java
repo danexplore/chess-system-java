@@ -30,6 +30,8 @@ public class UI {
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 	
+//	Read a position in form of a String, get the char column and int row of the string
+//	and return new ChessPosition(column, row).
 	public static ChessPosition readChessPosition(Scanner sc) {
 		try {
 			String s = sc.nextLine();
